@@ -31,7 +31,7 @@ public class AutoConvertLead {
 
 
             //set Don't Create Opportunity
-            leadconvert.isDoNotCreateOpportunity();
+            leadconvert.SetDoNotCreateOpportunity(True);
             
             //set Account for Contact Student
             leadconvert.setAccountId(getContactParent.AccountId);
