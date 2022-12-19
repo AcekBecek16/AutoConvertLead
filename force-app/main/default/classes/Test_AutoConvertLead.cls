@@ -66,7 +66,7 @@ private class Test_AutoConvertLead {
             LastName= 'test last name',
             RecordTypeId = LeadRecordType.Id,
             Email = 'test@example.com',
-            Status = 'Enquiry',
+            Status = 'Admitted',
             Company = 'test Company'
         );
         Insert lead;

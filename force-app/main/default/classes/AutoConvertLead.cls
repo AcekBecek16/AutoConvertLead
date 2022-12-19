@@ -11,7 +11,13 @@ public class AutoConvertLead {
 
         Contact getContactParent = [SELECT Id, AccountId, Email, FirstName, LastName FROM Contact WHERE Id=:IDs Limit 1];
 
-        List<Lead> cekleadChilds = [SELECT Id, Company, MobilePhone, FirstName, LastName, Email FROM Lead Where Email=:getContactParent.Email AND RecordTypeId='0125g000000Ny6uAAC'];
+        List<Lead> cekleadChilds = [
+            SELECT Id, Company, MobilePhone, FirstName, LastName, Email 
+            FROM Lead 
+            Where Email=:getContactParent.Email 
+            AND RecordTypeId='0125g000000Ny6uAAC' 
+            AND Status = 'Admitted'];
+
         List<Id> ChildLeadIDs = New List<Id>();
         for(Lead listLead : cekleadChilds){
             ChildLeadIDs.add(listLead.Id);
