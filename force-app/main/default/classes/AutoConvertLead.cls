@@ -11,11 +11,25 @@ public class AutoConvertLead {
 
         Contact getContactParent = [SELECT Id, AccountId, Email, FirstName, LastName FROM Contact WHERE Id=:IDs Limit 1];
 
+        //! get Lead Record Type
+        RecordType LeadRecordType = [
+            SELECT
+                Id,
+                Name,
+                DeveloperName,
+                SobjectType
+            FROM
+                RecordType
+            WHERE
+                SobjectType = 'Lead' 
+                AND
+                Name ='Student'];
+
         List<Lead> cekleadChilds = [
             SELECT Id, Company, MobilePhone, FirstName, LastName, Email 
             FROM Lead 
             Where Email=:getContactParent.Email 
-            AND RecordTypeId='0125g000000Ny6uAAC' 
+            AND RecordTypeId =: LeadRecordType.Id 
             AND Status = 'Admitted'];
 
         List<Id> ChildLeadIDs = New List<Id>();
